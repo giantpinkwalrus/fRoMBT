@@ -1,0 +1,38 @@
+#preview-show-vars: state
+aal "robotModel" {
+    language "python" {
+        import robotadapter as arobot
+    }
+    variables { state }
+    initial_state {
+        state = "jennytest"
+    }
+    input "jennytest" {
+    guard { return state == "jennytest" }
+    adapter {
+    arobot.runTest('Scenario2.rst')
+    }
+    body {
+        state = "friendTests"
+    }
+    }
+    input "friendTests" {
+    guard { return state == "friendTests" }
+    adapter {
+    arobot.runTest('friend1.rst')
+    arobot.runTest('friend2.rst')
+    arobot.runTest('friend3.rst')
+    arobot.runTest('friend4.rst')
+    arobot.runTest('friend5.rst')
+    }
+    body { state = "jennytestB" }
+    }
+    input "jennytestB" {
+    guard { return state == "jennytestB" }
+    adapter {
+    arobot.runTest('Scenario2B.rst')
+    }
+    body {
+    }
+    }
+}

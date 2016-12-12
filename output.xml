@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161212 20:57:06.723" generator="Robot 3.0 (Python 2.7.12 on linux2)">
+<suite source="/home/walrus/oppari/Scenario2B.rst" id="s1" name="Scenario2B">
+<test id="s1-t1" name="Jenny Comes Back">
+<kw name="Open Browser To Login Page" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LoginUrl}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:06.984" level="INFO">Opening browser 'firefox' to base url 'http://95.85.57.151/login'</msg>
+<status status="PASS" endtime="20161212 20:57:12.431" starttime="20161212 20:57:06.983"></status>
+</kw>
+<kw name="Set Window Size" library="ExtendedSelenium2Library">
+<doc>Sets the `width` and `height` of the current window to the specified values.</doc>
+<arguments>
+<arg>1920</arg>
+<arg>1200</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:12.444" starttime="20161212 20:57:12.432"></status>
+</kw>
+<kw name="Maximize Browser Window" library="ExtendedSelenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20161212 20:57:12.491" starttime="20161212 20:57:12.444"></status>
+</kw>
+<kw name="Set Selenium Speed" library="ExtendedSelenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:12.492" starttime="20161212 20:57:12.491"></status>
+</kw>
+<kw name="Location Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${LoginUrl}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:12.735" level="INFO">Current location is 'http://95.85.57.151/login'.</msg>
+<status status="PASS" endtime="20161212 20:57:12.736" starttime="20161212 20:57:12.492"></status>
+</kw>
+<kw name="Title Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>${LoginTitle}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:12.949" level="INFO">Page title is 'Contriboard'.</msg>
+<status status="PASS" endtime="20161212 20:57:12.949" starttime="20161212 20:57:12.736"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//form[@class='form']</arg>
+<arg>timeout=2</arg>
+<arg>error=Login Form Not Found</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:13.177" starttime="20161212 20:57:12.949"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:13.178" starttime="20161212 20:57:06.983"></status>
+</kw>
+<kw name="Login User" library="resource">
+<arguments>
+<arg>jenny.porter@test.com</arg>
+<arg>jennyporter</arg>
+</arguments>
+<kw name="Input Username" library="resource">
+<arguments>
+<arg>${ValidUser}</arg>
+</arguments>
+<kw name="Input Text" library="ExtendedSelenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>//input[@type='email']</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:13.182" level="INFO">Typing text 'jenny.porter@test.com' into text field '//input[@type='email']'</msg>
+<status status="PASS" endtime="20161212 20:57:14.138" starttime="20161212 20:57:13.181"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:14.138" starttime="20161212 20:57:13.180"></status>
+</kw>
+<kw name="Input User Password" library="resource">
+<arguments>
+<arg>${ValidPassword}</arg>
+</arguments>
+<kw name="Input Password" library="ExtendedSelenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>//input[@type='password']</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:14.141" level="INFO">Typing password into text field '//input[@type='password']'</msg>
+<status status="PASS" endtime="20161212 20:57:14.930" starttime="20161212 20:57:14.140"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:14.930" starttime="20161212 20:57:14.139"></status>
+</kw>
+<kw name="Get Element Attribute" library="ExtendedSelenium2Library">
+<doc>Return value of element attribute.</doc>
+<arguments>
+<arg>//input[@class='btn-primary']@value</arg>
+</arguments>
+<assign>
+<var>${check}</var>
+</assign>
+<msg timestamp="20161212 20:57:15.373" level="INFO">${check} = Log in</msg>
+<status status="PASS" endtime="20161212 20:57:15.374" starttime="20161212 20:57:14.931"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${check}</arg>
+<arg>Log in</arg>
+<arg>error=Login button missing</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:15.376" starttime="20161212 20:57:15.374"></status>
+</kw>
+<kw name="Submit Credentials" library="resource">
+<kw name="Click Button" library="ExtendedSelenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>//input[@class='btn-primary']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:15.378" level="INFO">Clicking button '//input[@class='btn-primary']'.</msg>
+<status status="PASS" endtime="20161212 20:57:16.061" starttime="20161212 20:57:15.377"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:16.062" starttime="20161212 20:57:15.376"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//div[@class='view view-workspace']</arg>
+<arg>timeout=2</arg>
+<arg>error=Board list Not Found</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:16.739" starttime="20161212 20:57:16.063"></status>
+</kw>
+<kw name="Location Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${BoardUrl}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:16.974" level="INFO">Current location is 'http://95.85.57.151/boards'.</msg>
+<status status="PASS" endtime="20161212 20:57:16.974" starttime="20161212 20:57:16.739"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:16.974" starttime="20161212 20:57:13.179"></status>
+</kw>
+<kw name="Open Board" library="resource">
+<arguments>
+<arg>2</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Get Board Xpath" library="resource">
+<arguments>
+<arg>${min}</arg>
+<arg>${max}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(${min}, ${max})</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${int}</var>
+</assign>
+<msg timestamp="20161212 20:57:16.979" level="INFO">${int} = 2</msg>
+<status status="PASS" endtime="20161212 20:57:16.980" starttime="20161212 20:57:16.977"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Bxpath}</arg>
+<arg>xpath=/html/body/div/div/div[2]/div[${int}]/div[1]/div</arg>
+</arguments>
+<msg timestamp="20161212 20:57:16.982" level="INFO">${Bxpath} = xpath=/html/body/div/div/div[2]/div[2]/div[1]/div</msg>
+<status status="PASS" endtime="20161212 20:57:16.982" starttime="20161212 20:57:16.980"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:16.983" starttime="20161212 20:57:16.976"></status>
+</kw>
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${Bxpath}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:16.983" level="INFO">Clicking element 'xpath=/html/body/div/div/div[2]/div[2]/div[1]/div'.</msg>
+<status status="PASS" endtime="20161212 20:57:17.575" starttime="20161212 20:57:16.983"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//div[@class='board']</arg>
+<arg>timeout=2</arg>
+<arg>error=Board Not Open</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:17.786" starttime="20161212 20:57:17.576"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:17.787" starttime="20161212 20:57:16.975"></status>
+</kw>
+<kw name="Open Help" library="resource">
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>//span[@class='fa fa-fw fa-question']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:17.788" level="INFO">Clicking element '//span[@class='fa fa-fw fa-question']'.</msg>
+<status status="PASS" endtime="20161212 20:57:18.418" starttime="20161212 20:57:17.788"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>//div[@class='infospace']</arg>
+<arg>timeout=3</arg>
+<arg>error=Help not open</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:18.862" starttime="20161212 20:57:18.419"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:18.862" starttime="20161212 20:57:17.787"></status>
+</kw>
+<kw name="Close Help" library="resource">
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>//span[@class='fa fa-fw fa-times']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:18.865" level="INFO">Clicking element '//span[@class='fa fa-fw fa-times']'.</msg>
+<status status="PASS" endtime="20161212 20:57:19.390" starttime="20161212 20:57:18.864"></status>
+</kw>
+<kw name="Element Should Not Be Visible" library="ExtendedSelenium2Library">
+<doc>Verifies that the element identified by `locator` is NOT visible.</doc>
+<arguments>
+<arg>//div[@class='infospace']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:19.391" level="INFO">Verifying element '//div[@class='infospace']' is not visible.</msg>
+<status status="PASS" endtime="20161212 20:57:19.607" starttime="20161212 20:57:19.391"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:19.608" starttime="20161212 20:57:18.863"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:19.608" critical="yes" starttime="20161212 20:57:06.982"></status>
+</test>
+<test id="s1-t2" name="Jenny Edit Tickets">
+<kw name="Open Ticket Edit" library="resource">
+<arguments>
+<arg>1</arg>
+<arg>1</arg>
+</arguments>
+<kw name="Get Ticket Xpath" library="resource">
+<arguments>
+<arg>${min}</arg>
+<arg>${max}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(${min}, ${max})</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${int}</var>
+</assign>
+<msg timestamp="20161212 20:57:19.618" level="INFO">${int} = 1</msg>
+<status status="PASS" endtime="20161212 20:57:19.618" starttime="20161212 20:57:19.616"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Txpath}</arg>
+<arg>xpath=/html/body/div/div/div[2]/div/div[1]/div[${int}]</arg>
+</arguments>
+<msg timestamp="20161212 20:57:19.621" level="INFO">${Txpath} = xpath=/html/body/div/div/div[2]/div/div[1]/div[1]</msg>
+<status status="PASS" endtime="20161212 20:57:19.621" starttime="20161212 20:57:19.618"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>\${tint}</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:19.622" level="INFO">${tint} = </msg>
+<status status="PASS" endtime="20161212 20:57:19.622" starttime="20161212 20:57:19.621"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${tint}</arg>
+<arg>${int}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:19.623" level="INFO">${tint} = 1</msg>
+<status status="PASS" endtime="20161212 20:57:19.623" starttime="20161212 20:57:19.622"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:19.623" starttime="20161212 20:57:19.614"></status>
+</kw>
+<kw name="Double Click Element" library="ExtendedSelenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${Txpath}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:19.624" level="INFO">Double clicking element 'xpath=/html/body/div/div/div[2]/div/div[1]/div[1]'.</msg>
+<kw name="Capture Page Screenshot" library="ExtendedSelenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20161212 20:57:20.154" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20161212 20:57:20.155" starttime="20161212 20:57:19.844"></status>
+</kw>
+<msg timestamp="20161212 20:57:20.157" level="FAIL">WebDriverException: Message: POST /session/ab20abb4-3303-4932-8a36-384b9531e9ed/moveto did not match a known command
+</msg>
+<status status="FAIL" endtime="20161212 20:57:20.157" starttime="20161212 20:57:19.624"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.158" starttime="20161212 20:57:19.613"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.159" critical="yes" starttime="20161212 20:57:19.611">WebDriverException: Message: POST /session/ab20abb4-3303-4932-8a36-384b9531e9ed/moveto did not match a known command
+</status>
+</test>
+<test id="s1-t3" name="Close7">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.466" starttime="20161212 20:57:20.162"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.467" critical="yes" starttime="20161212 20:57:20.161"></status>
+</test>
+<test id="s1-t4" name="Friend 1 Edit Tickets">
+<kw name="Open Shared Board" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${Shared}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.475" level="FAIL">Variable '${Shared}' not found.</msg>
+<status status="FAIL" endtime="20161212 20:57:20.476" starttime="20161212 20:57:20.472"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.476" starttime="20161212 20:57:20.470"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.476" critical="yes" starttime="20161212 20:57:20.468">Variable '${Shared}' not found.</status>
+</test>
+<test id="s1-t5" name="Close8">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.478" starttime="20161212 20:57:20.478"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.478" critical="yes" starttime="20161212 20:57:20.477"></status>
+</test>
+<test id="s1-t6" name="Friend 2 Edit Tickets">
+<kw name="Open Shared Board" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${Shared}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.482" level="FAIL">Variable '${Shared}' not found.</msg>
+<status status="FAIL" endtime="20161212 20:57:20.482" starttime="20161212 20:57:20.480"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.482" starttime="20161212 20:57:20.480"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.483" critical="yes" starttime="20161212 20:57:20.479">Variable '${Shared}' not found.</status>
+</test>
+<test id="s1-t7" name="Close9">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.484" starttime="20161212 20:57:20.484"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.485" critical="yes" starttime="20161212 20:57:20.483"></status>
+</test>
+<test id="s1-t8" name="Friend 3 Edit Tickets">
+<kw name="Open Shared Board" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${Shared}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.488" level="FAIL">Variable '${Shared}' not found.</msg>
+<status status="FAIL" endtime="20161212 20:57:20.489" starttime="20161212 20:57:20.487"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.489" starttime="20161212 20:57:20.486"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.489" critical="yes" starttime="20161212 20:57:20.485">Variable '${Shared}' not found.</status>
+</test>
+<test id="s1-t9" name="Close10">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.491" starttime="20161212 20:57:20.491"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.491" critical="yes" starttime="20161212 20:57:20.490"></status>
+</test>
+<test id="s1-t10" name="Friend 4 Edit Tickets">
+<kw name="Open Shared Board" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${Shared}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.495" level="FAIL">Variable '${Shared}' not found.</msg>
+<status status="FAIL" endtime="20161212 20:57:20.495" starttime="20161212 20:57:20.493"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.495" starttime="20161212 20:57:20.493"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.495" critical="yes" starttime="20161212 20:57:20.492">Variable '${Shared}' not found.</status>
+</test>
+<test id="s1-t11" name="Close11">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.497" starttime="20161212 20:57:20.497"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.497" critical="yes" starttime="20161212 20:57:20.496"></status>
+</test>
+<test id="s1-t12" name="Friend 5 Edit Tickets">
+<kw name="Open Shared Board" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${Shared}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.501" level="FAIL">Variable '${Shared}' not found.</msg>
+<status status="FAIL" endtime="20161212 20:57:20.501" starttime="20161212 20:57:20.499"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.501" starttime="20161212 20:57:20.499"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:20.502" critical="yes" starttime="20161212 20:57:20.498">Variable '${Shared}' not found.</status>
+</test>
+<test id="s1-t13" name="Close12">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161212 20:57:20.503" starttime="20161212 20:57:20.503"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:20.503" critical="yes" starttime="20161212 20:57:20.502"></status>
+</test>
+<test id="s1-t14" name="TODO-List is finished">
+<kw name="Open Browser To Login Page" library="resource">
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LoginUrl}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:20.506" level="INFO">Opening browser 'firefox' to base url 'http://95.85.57.151/login'</msg>
+<status status="PASS" endtime="20161212 20:57:26.487" starttime="20161212 20:57:20.505"></status>
+</kw>
+<kw name="Set Window Size" library="ExtendedSelenium2Library">
+<doc>Sets the `width` and `height` of the current window to the specified values.</doc>
+<arguments>
+<arg>1920</arg>
+<arg>1200</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:26.702" starttime="20161212 20:57:26.488"></status>
+</kw>
+<kw name="Maximize Browser Window" library="ExtendedSelenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20161212 20:57:26.913" starttime="20161212 20:57:26.702"></status>
+</kw>
+<kw name="Set Selenium Speed" library="ExtendedSelenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:26.915" starttime="20161212 20:57:26.914"></status>
+</kw>
+<kw name="Location Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${LoginUrl}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:27.130" level="INFO">Current location is 'http://95.85.57.151/login'.</msg>
+<status status="PASS" endtime="20161212 20:57:27.130" starttime="20161212 20:57:26.916"></status>
+</kw>
+<kw name="Title Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>${LoginTitle}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:27.342" level="INFO">Page title is 'Contriboard'.</msg>
+<status status="PASS" endtime="20161212 20:57:27.343" starttime="20161212 20:57:27.131"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//form[@class='form']</arg>
+<arg>timeout=2</arg>
+<arg>error=Login Form Not Found</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:27.559" starttime="20161212 20:57:27.344"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:27.560" starttime="20161212 20:57:20.505"></status>
+</kw>
+<kw name="Login User" library="resource">
+<arguments>
+<arg>jenny.porter@test.com</arg>
+<arg>jennyporter</arg>
+</arguments>
+<kw name="Input Username" library="resource">
+<arguments>
+<arg>${ValidUser}</arg>
+</arguments>
+<kw name="Input Text" library="ExtendedSelenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>//input[@type='email']</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:27.563" level="INFO">Typing text 'jenny.porter@test.com' into text field '//input[@type='email']'</msg>
+<status status="PASS" endtime="20161212 20:57:28.473" starttime="20161212 20:57:27.562"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:28.474" starttime="20161212 20:57:27.561"></status>
+</kw>
+<kw name="Input User Password" library="resource">
+<arguments>
+<arg>${ValidPassword}</arg>
+</arguments>
+<kw name="Input Password" library="ExtendedSelenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>//input[@type='password']</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:28.480" level="INFO">Typing password into text field '//input[@type='password']'</msg>
+<status status="PASS" endtime="20161212 20:57:29.232" starttime="20161212 20:57:28.479"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:29.233" starttime="20161212 20:57:28.474"></status>
+</kw>
+<kw name="Get Element Attribute" library="ExtendedSelenium2Library">
+<doc>Return value of element attribute.</doc>
+<arguments>
+<arg>//input[@class='btn-primary']@value</arg>
+</arguments>
+<assign>
+<var>${check}</var>
+</assign>
+<msg timestamp="20161212 20:57:29.676" level="INFO">${check} = Log in</msg>
+<status status="PASS" endtime="20161212 20:57:29.676" starttime="20161212 20:57:29.233"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${check}</arg>
+<arg>Log in</arg>
+<arg>error=Login button missing</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:29.678" starttime="20161212 20:57:29.677"></status>
+</kw>
+<kw name="Submit Credentials" library="resource">
+<kw name="Click Button" library="ExtendedSelenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>//input[@class='btn-primary']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:29.680" level="INFO">Clicking button '//input[@class='btn-primary']'.</msg>
+<status status="PASS" endtime="20161212 20:57:30.365" starttime="20161212 20:57:29.679"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:30.366" starttime="20161212 20:57:29.678"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//div[@class='view view-workspace']</arg>
+<arg>timeout=2</arg>
+<arg>error=Board list Not Found</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:30.655" starttime="20161212 20:57:30.366"></status>
+</kw>
+<kw name="Location Should Be" library="ExtendedSelenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${BoardUrl}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:30.952" level="INFO">Current location is 'http://95.85.57.151/boards'.</msg>
+<status status="PASS" endtime="20161212 20:57:30.952" starttime="20161212 20:57:30.655"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:30.953" starttime="20161212 20:57:27.560"></status>
+</kw>
+<kw name="Open Board" library="resource">
+<arguments>
+<arg>2</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Get Board Xpath" library="resource">
+<arguments>
+<arg>${min}</arg>
+<arg>${max}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(${min}, ${max})</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${int}</var>
+</assign>
+<msg timestamp="20161212 20:57:30.962" level="INFO">${int} = 2</msg>
+<status status="PASS" endtime="20161212 20:57:30.962" starttime="20161212 20:57:30.957"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Bxpath}</arg>
+<arg>xpath=/html/body/div/div/div[2]/div[${int}]/div[1]/div</arg>
+</arguments>
+<msg timestamp="20161212 20:57:30.965" level="INFO">${Bxpath} = xpath=/html/body/div/div/div[2]/div[2]/div[1]/div</msg>
+<status status="PASS" endtime="20161212 20:57:30.965" starttime="20161212 20:57:30.962"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:30.965" starttime="20161212 20:57:30.954"></status>
+</kw>
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${Bxpath}</arg>
+</arguments>
+<msg timestamp="20161212 20:57:30.966" level="INFO">Clicking element 'xpath=/html/body/div/div/div[2]/div[2]/div[1]/div'.</msg>
+<status status="PASS" endtime="20161212 20:57:31.559" starttime="20161212 20:57:30.965"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>//div[@class='board']</arg>
+<arg>timeout=2</arg>
+<arg>error=Board Not Open</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:31.789" starttime="20161212 20:57:31.560"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:31.789" starttime="20161212 20:57:30.954"></status>
+</kw>
+<kw name="Open Help" library="resource">
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>//span[@class='fa fa-fw fa-question']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:31.790" level="INFO">Clicking element '//span[@class='fa fa-fw fa-question']'.</msg>
+<status status="PASS" endtime="20161212 20:57:32.429" starttime="20161212 20:57:31.790"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="ExtendedSelenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>//div[@class='infospace']</arg>
+<arg>timeout=3</arg>
+<arg>error=Help not open</arg>
+</arguments>
+<status status="PASS" endtime="20161212 20:57:32.947" starttime="20161212 20:57:32.430"></status>
+</kw>
+<status status="PASS" endtime="20161212 20:57:32.947" starttime="20161212 20:57:31.789"></status>
+</kw>
+<kw name="Close Help" library="resource">
+<kw name="Click Element" library="ExtendedSelenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>//span[@class='fa fa-fw fa-times']</arg>
+</arguments>
+<msg timestamp="20161212 20:57:32.949" level="INFO">Clicking element '//span[@class='fa fa-fw fa-times']'.</msg>
+<kw name="Capture Page Screenshot" library="ExtendedSelenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" endtime="20161212 20:57:33.444" starttime="20161212 20:57:33.443"></status>
+</kw>
+<msg timestamp="20161212 20:57:33.444" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
+<msg timestamp="20161212 20:57:33.451" level="FAIL">IOError: [Errno 32] Broken pipe</msg>
+<status status="FAIL" endtime="20161212 20:57:33.452" starttime="20161212 20:57:32.948"></status>
+</kw>
+<status status="FAIL" endtime="20161212 20:57:33.452" starttime="20161212 20:57:32.948"></status>
+</kw>
+<errors>
+</errors>
+</robot>

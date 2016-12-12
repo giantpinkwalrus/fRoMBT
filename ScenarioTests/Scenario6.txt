@@ -1,0 +1,74 @@
+*** Settings ***
+Resource          resource.txt
+
+*** Test Cases ***
+John Opens Computer And Logins
+    [Tags]    sc6    log6
+    Open Browser To Login Page
+    Login User    john@test.com    johnjohn
+
+John Creates and Opens Board
+    [Tags]    sc6
+    Create Board
+    Open Board    2    2
+
+John Uses Help
+    [Tags]    sc6
+    Open Help
+    Change Help Slides
+    Close Help
+
+John Resizes Board
+    [Tags]    sc6
+    : FOR    ${index}    IN RANGE    0    3
+    \    Resize Board    3    10    3    10
+
+John Changes Board Name
+    [Tags]    sc6
+    Click Edit Board From Board
+    Input Board Name    Entisöintiprojekti
+    Click Done Board Edit
+
+John Changes Custom Background
+    [Tags]    sc6
+    Set Custom Background
+
+John Uses Markdown Text in Ticket and Adds Comment
+    [Tags]    sc6
+    Create Ticket with Markdown Text and Comment    -450    -250    TO-DO
+
+John Exports Board as Image
+    [Tags]    sc6
+    Export Board Image
+
+John Wants to Know More About the Product
+    [Tags]    sc6
+    Click About Button
+
+John Changes Password
+    [Tags]    sc6
+    Change Password    johnjohn    johnjohn2
+    Change Password    johnjohn2    johnjohn
+
+John Set Username
+    [Tags]    sc6
+    Set Username    John
+
+John Checks Board Members
+    [Tags]    sc6
+    Check Board Members
+
+John Reviews Ticket
+    [Tags]    sc6
+    Create Ticket    1    1
+    Review Tickets
+
+John Shares Board
+    [Tags]    sc6
+    Share Board From Board
+
+Close
+    [Tags]    sc6
+    Log Out
+    Close Browser
+    [Teardown]

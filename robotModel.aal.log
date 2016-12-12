@@ -1,0 +1,65 @@
+1481568948.508494 starting
+1481569053.461705 Exception <type 'exceptions.IOError'> in action3adapter: [Errno 32] Broken pipe
+1481569053.463072 Traceback (most recent call last):
+  File "/usr/local/lib64/python2.7/site-packages/aalmodel.py", line 99, in call
+    rv = eval(func.func_code, self._variables)
+  File "robotModel.aal", line 33, in adapter of action "i:jennytestB"
+    arobot.runTest('Scenario2B.rst')
+  File "/home/walrus/oppari/robotadapter.py", line 8, in runTest
+    response = rob.run(scriptLocation+testFile)
+  File "/usr/lib/python2.7/site-packages/robot/run.py", line 503, in run
+    return RobotFramework().execute(*datasources, **options)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 76, in execute
+    return self._execute(list(arguments), options)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 89, in _execute
+    details, rc=FRAMEWORK_ERROR)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 103, in _report_error
+    self._logger.error(message)
+  File "/usr/lib/python2.7/site-packages/robot/output/loggerhelper.py", line 59, in error
+    self.write(msg, 'ERROR')
+  File "/usr/lib/python2.7/site-packages/robot/output/loggerhelper.py", line 62, in write
+    self.message(Message(message, level, html))
+  File "/usr/lib/python2.7/site-packages/robot/output/logger.py", line 140, in message
+    logger.message(msg)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/verbose.py", line 65, in message
+    self._writer.error(msg.message, msg.level, clear=self._running_test)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/verbose.py", line 142, in error
+    self._stderr.error(message, level)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/highlighting.py", line 71, in error
+    self.write('[ ', flush=False)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/highlighting.py", line 50, in write
+    self.stream.write(console_encode(text, stream=self.stream))
+IOError: [Errno 32] Broken pipe
+
+1481569053.464075 Error at adapter() of "i:jennytestB": IOError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "robotModel.aal", line 33, in adapter of action "i:jennytestB"
+    arobot.runTest('Scenario2B.rst')
+  File "/home/walrus/oppari/robotadapter.py", line 8, in runTest
+    response = rob.run(scriptLocation+testFile)
+  File "/usr/lib/python2.7/site-packages/robot/run.py", line 503, in run
+    return RobotFramework().execute(*datasources, **options)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 76, in execute
+    return self._execute(list(arguments), options)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 89, in _execute
+    details, rc=FRAMEWORK_ERROR)
+  File "/usr/lib/python2.7/site-packages/robot/utils/application.py", line 103, in _report_error
+    self._logger.error(message)
+  File "/usr/lib/python2.7/site-packages/robot/output/loggerhelper.py", line 59, in error
+    self.write(msg, 'ERROR')
+  File "/usr/lib/python2.7/site-packages/robot/output/loggerhelper.py", line 62, in write
+    self.message(Message(message, level, html))
+  File "/usr/lib/python2.7/site-packages/robot/output/logger.py", line 140, in message
+    logger.message(msg)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/verbose.py", line 65, in message
+    self._writer.error(msg.message, msg.level, clear=self._running_test)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/verbose.py", line 142, in error
+    self._stderr.error(message, level)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/highlighting.py", line 71, in error
+    self.write('[ ', flush=False)
+  File "/usr/lib/python2.7/site-packages/robot/output/console/highlighting.py", line 50, in write
+    self.stream.write(console_encode(text, stream=self.stream))
+
+1481569053.464126 remote_pyaal error: [Errno 32] Broken pipe
+
+1481569053.464583 quitting

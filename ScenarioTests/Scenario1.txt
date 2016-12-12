@@ -1,0 +1,163 @@
+*** Settings ***
+Resource          resource.txt
+
+*** Test Cases ***
+Wallace opens computer
+    [Tags]    sc1
+    Open Browser To Login Page
+
+Wallace Invalid Login
+    [Tags]    sc1
+    Invalid Login    ${InvalidUser}    ${InvalidPassword}
+    Go To Login Page
+    Invalid Login    ${InvalidUser}    ${EMPTY}
+    Go To Login Page
+    Invalid Login    ${EMPTY}    ${InvalidPassword}
+    Go To Login Page
+    Invalid Login    ${EMPTY}    ${EMPTY}
+    Go To Login Page
+
+Wallace Registers
+    [Tags]    sc1
+    Register User    wallace.coleman@test.com    wallacecoleman
+
+Wallace Explores part 1
+    [Tags]    sc1
+    Wallace First Try
+
+Wallace ReLogin
+    [Tags]    sc1
+    Login User    wallace.coleman@test.com    wallacecoleman
+
+Wallace Explores Part 2
+    [Tags]    sc1
+    Repeat Keyword    3    Create Board
+
+Wallace Tests Help
+    Open Board    2    2
+    Open Help
+    Change Help Slides
+    Close Help
+    Close Board
+
+Wallace Tries Board buttons
+    [Tags]    sc1
+    Delete Board    4    4
+
+Wallace Edits board
+    [Tags]    sc1
+    Click Edit Board    3    3
+    Input Board Name    Ideas of Wallace
+    Change Background    1    1
+    Change Background    2    2
+    Change Background    3    3
+    Change Background    4    4
+    Change Background    5    5
+    Change Background    6    6
+    Change Background    7    7
+    Change Background    8    8
+    Change Background    0    0
+
+Wallace Sets Background and clicks cancel
+    [Tags]    sc1
+    Change Background    6    6
+    Click Cancel Edit Board
+
+Wallce Edit Board Again
+    [Tags]    sc1
+    Click Edit Board    3    3
+    Input Board Name    Ides of Wallace
+    Change Background    6    6
+    Click Done Board Edit
+
+Wallace Opens Board
+    [Tags]    sc1
+    Open Board    3    3
+
+Wallace Explores Part 3
+    [Tags]    sc1
+    Click Magnet On
+    Click Globe On
+    Click Magnet Off
+    Click Globe Off
+    Click Edit Board From Board
+
+Wallace Changes Wrong Board Name
+    [Tags]    sc1
+    Input Board Name    Ideas Of Wallace
+    Click Done Board Edit
+
+Wallace Creates and Moves Tickets
+    [Tags]    sc1
+    Create Ticket    1    1
+    Create Ticket    2    2
+    Create Ticket    3    3
+    Create Ticket    4    4
+    Create Ticket    5    5
+
+Wallace Tries Magnet
+    [Tags]    sc1
+    Click Magnet On
+    Create Ticket    6    6
+    Create Ticket    7    7
+    Create Ticket    8    8
+    Click Magnet Off
+    Create Ticket    9    9
+    Create Ticket    10    10
+    Create Ticket    11    11
+
+Wallace Creates And Moves New Tickets
+    [Tags]    sc1
+    Create Ticket    12    12
+    Create Ticket    13    13
+    Create Ticket    14    14
+
+Wallace Learns to Edit Ticket
+    [Tags]    sc1
+    Open Ticket Edit    1    1
+    Input Ticket Text    Idea Of Wallace1
+    Click Done Ticket Edit
+
+Wallace Edits Tickets
+    [Tags]    sc1
+    Open Ticket Edit    2    2
+    Input Ticket Text    Idea Of Wallace2
+    Click Done Ticket Edit
+    Open Ticket Edit    3    3
+    Input Ticket Text    Idea Of Wallace3
+    Click Done Ticket Edit
+    Open Ticket Edit    4    4
+    Input Ticket Text    Idea Of Wallace4
+    Click Done Ticket Edit
+    Open Ticket Edit    5    5
+    Input Ticket Text    Idea Of Wallace5
+    Click Done Ticket Edit
+    Open Ticket Edit    6    6
+    Input Ticket Text    Idea Of Wallace6
+    Click Done Ticket Edit
+
+Wallace Deletes Obselete Tickets
+    [Tags]    sc1
+    Delete Ticket    14    14
+    Delete Ticket    13    13
+    Delete Ticket    12    12
+    Delete Ticket    11    11
+    Delete Ticket    10    10
+    Delete Ticket    9    9
+    Delete Ticket    8    8
+    Delete Ticket    7    7
+
+Wallace Closes Board
+    [Tags]    sc1
+    Close Board
+
+Wallace Checks The Board
+    [Tags]    sc1
+    Open Board    3    3
+    Close Board
+
+Wallace Is Done
+    [Tags]    sc1
+    Log Out
+    Close Browser
+    [Teardown]
